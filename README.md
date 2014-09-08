@@ -1,2 +1,3 @@
-restaurant_analyzer
-===================
+# analyzer
+
+a [Sails](http://sailsjs.org) application
