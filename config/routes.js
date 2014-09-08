@@ -36,12 +36,12 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  '/topdishes/restaurantID/:restaurantID': {
+  '/restaurant/:restaurantID/topdish': {
     controller     : 'Main',
     action         : 'getTopDishes'  
   },
 
-  '/Revenue/restaurantID/:restaurantID': {
+  '/restaurant/:restaurantID/revenue': {
     controller     : 'Main',
     action         : 'getRevenue'
   }
