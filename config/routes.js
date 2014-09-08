@@ -34,6 +34,16 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
+  },
+
+  '/topdishes/restaurantID/:restaurantID': {
+    controller     : 'Main',
+    action         : 'getTopDishes'  
+  },
+
+  '/Revenue/restaurantID/:restaurantID': {
+    controller     : 'Main',
+    action         : 'getRevenue'
   }
 
   /***************************************************************************
