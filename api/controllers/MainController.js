@@ -5,7 +5,7 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-var Maincontroller = {
+module.exports = {
 	getTopDishes: function (req, res) {
 		//dummies data
 		var dishes = ['Bak Kut Teh', 'Carrot Cake', 'Char Kway Teow', 'Chili Crab', 'Hainanese Chicken Rice',
@@ -13,6 +13,8 @@ var Maincontroller = {
 
 		restaurants = ['Chinese Restaurant', 'Singapore Restaurant', 'Royal Restaurant', 'Five Star Restaurant'];
 		//end of dummies data
+		res.send(rand.random(10).toString());
+		return ;
 
 		random = function(n) {
 			return Math.floor(Math.random() * n);
@@ -44,7 +46,7 @@ var Maincontroller = {
 			dateString = '';
 
 			date = (dateObj.getDate()).toString();
-			if (date.lenth < 2) date = '0' + date;
+			if (date.length < 2) date = '0' + date;
 
 			//getMonth() return value in range [0..11]
 			month = (dateObj.getMonth() + 1).toString();
@@ -71,6 +73,4 @@ var Maincontroller = {
 		res.json(revenueInfo);
 	}
 };
-
-module.exports = Maincontroller;
 
