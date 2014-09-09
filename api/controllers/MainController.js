@@ -13,8 +13,6 @@ module.exports = {
 
 		restaurants = ['Chinese Restaurant', 'Singapore Restaurant', 'Royal Restaurant', 'Five Star Restaurant'];
 		//end of dummies data
-		res.send(rand.random(10).toString());
-		return ;
 
 		random = function(n) {
 			return Math.floor(Math.random() * n);
