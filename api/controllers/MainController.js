@@ -86,8 +86,8 @@ module.exports = {
 	},
 
 	getRestaurant: function(req, res) {
-		Restaurant.find({ 'id': req.param('restaurantID') }, function(err, restaurant) {
-			res.json(restaurant);
+		Restaurant.find({ 'id': req.param('restaurantID') }, function(err, queryResult) {
+			res.json(queryResult ? queryResult[0] : {error: 'Not found.'});
 		});
 	}
 };
