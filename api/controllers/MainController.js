@@ -6,9 +6,14 @@
  */
 
 module.exports = {
-	test: function(req, res) {
-		Restaurant.find().exec(function(err, restaurants) {
-			res.json(restaurants);
+	getRestaurantID: function(req, res) {
+		Restaurant.find({}, function(err, restaurants) {
+			idList = [];
+
+			for (var i = 0; i < restaurants.length; i = i + 1) 
+				idList[i] = restaurants[i].id;
+			
+			res.json(idList);
 		});
 	},
 
