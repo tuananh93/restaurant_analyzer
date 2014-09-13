@@ -44,6 +44,11 @@ module.exports.routes = {
   '/restaurant/:restaurantID/revenue': {
     controller     : 'Main',
     action         : 'getRevenue'
+  },
+
+  '/test': {
+    controller    : 'Main',
+    action        : 'test'
   }
 
   /***************************************************************************

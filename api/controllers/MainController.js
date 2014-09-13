@@ -6,6 +6,12 @@
  */
 
 module.exports = {
+	test: function(req, res) {
+		Restaurant.find().exec(function(err, restaurants) {
+			res.json(restaurants);
+		});
+	},
+
 	getTopDishes: function (req, res) {
 		//dummies data
 		var dishes = ['Bak Kut Teh', 'Carrot Cake', 'Char Kway Teow', 'Chili Crab', 'Hainanese Chicken Rice',
