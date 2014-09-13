@@ -11,7 +11,10 @@ module.exports = {
 			idList = [];
 
 			for (var i = 0; i < restaurants.length; i = i + 1) 
-				idList[i] = restaurants[i].id;
+				idList.push({
+					id: restaurants[i].id,
+					name: restaurants[i].name
+				});
 			
 			res.json(idList);
 		});
@@ -80,6 +83,12 @@ module.exports = {
 		}
 
 		res.json(revenueInfo);
+	},
+
+	getRestaurant: function(req, res) {
+		Restaurant.find({ 'id': req.param('restaurantID') }, function(err, restaurant) {
+			res.json(restaurant);
+		});
 	}
 };
 
