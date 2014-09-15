@@ -36,8 +36,8 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  '/restaurant/:restaurantID/topdish': {
-    controller     : 'Main',
+  '/restaurant/:restaurantID/topdish/:sortBy': {
+    controller     : 'Restaurant',
     action         : 'getTopDishes'  
   },
 
@@ -52,14 +52,13 @@ module.exports.routes = {
   },
 
   '/restaurant/:restaurantID': {
-    controller: 'Main',
-    action: 'getRestaurant'
+    controller    : 'Main',
+    action        : 'getRestaurant'
   },
 
-
-  '/restaurant/:restaurantID/test': {
-    controller: 'Restaurant',
-    action: 'getRevenue'
+  '/restaurant/:restaurantID/test/:sortBy': {
+    controller    : 'Restaurant',
+    action        : 'getTopDishes'
   }
 
   /***************************************************************************
