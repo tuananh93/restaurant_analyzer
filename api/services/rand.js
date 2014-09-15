@@ -1,3 +1,3 @@
-exports.random = 	function(n) {
+exports.next = 	function(n) {
 					return Math.floor(Math.random() * n);
 				};

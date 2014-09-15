@@ -8,7 +8,7 @@
 module.exports = {
   adapter: 'mongo',
   attributes: {
-
+  	restaurantID: 'objecid'
   }
 };
 

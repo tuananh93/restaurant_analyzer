@@ -6,6 +6,12 @@
  */
 
 module.exports = {
+	getRevenueTest: function(req, res) {
+		Restaurant.find({}, function(err, actions) {
+			res.send('tuananh');
+		});
+	},
+
 	getRestaurantID: function(req, res) {
 		Restaurant.find({}, function(err, restaurants) {
 			idList = [];

@@ -42,7 +42,7 @@ module.exports.routes = {
   },
 
   '/restaurant/:restaurantID/revenue': {
-    controller     : 'Main',
+    controller     : 'Restaurant',
     action         : 'getRevenue'
   },
 
@@ -54,6 +54,12 @@ module.exports.routes = {
   '/restaurant/:restaurantID': {
     controller: 'Main',
     action: 'getRestaurant'
+  },
+
+
+  '/restaurant/:restaurantID/test': {
+    controller: 'Restaurant',
+    action: 'getRevenue'
   }
 
   /***************************************************************************
