@@ -17,7 +17,6 @@ module.exports = {
 				console.log(err);
 				return;
 			}
-			console.log(actions.length);
 
 			var resultWithDuplicateDate = [];
 			var startDate = null;
@@ -72,9 +71,18 @@ module.exports = {
 	},
 
 	getTopDishes: function(req, res) {
-		var ObjectID = require('mongodb').ObjectID; 
+		var ObjectID 	= require('mongodb').ObjectID; 
+		
+		var top 		= req.param('top');
+		var startDate 	= req.param('startDate');
+		var endDate 	= req.param('endDate');
 
+		startDate = DateConverter.toTimeStamp(startDate, 0);
+		endDate   = DateConverter.toTimeStamp(endDate, 1);
+		
 		Action.find()
+		.where({timeStamp: {'>=': startDate}})
+		.where({timeStamp: {'<=': endDate}})
 		.where({action: 'submitOrder'})
 		.where({restaurantID: [new ObjectID(req.param('restaurantID'))]})
 		.exec(function(err, actions) {
@@ -85,6 +93,8 @@ module.exports = {
 
 			var duplicatedPurchaseList = [];
 			actions.forEach(function(action) {
+				console.log(action.timeStamp.constructor.name);
+
 				action['items'].forEach(function(item) {
 					var purchase = {};
 					purchase['item'] = item['name'];
@@ -119,7 +129,6 @@ module.exports = {
 				return b['amount'] - a['amount'];
 			});
 
-			var top = 3;
 			var totalAmount = 0;
 			purchaseList.forEach(function(entry) {
 				totalAmount += entry['amount'];
