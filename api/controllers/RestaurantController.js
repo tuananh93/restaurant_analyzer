@@ -74,8 +74,10 @@ module.exports = {
 		var ObjectID 	= require('mongodb').ObjectID; 
 		
 		var top 		= req.param('top');
-		var startDate 	= req.param('startDate');
-		var endDate 	= req.param('endDate');
+		if (top === undefined)
+			top = 3;
+		var startDate 	= req.param('startdate');
+		var endDate 	= req.param('enddate');
 
 		startDate = DateConverter.toTimeStamp(startDate, 0);
 		endDate   = DateConverter.toTimeStamp(endDate, 1);
@@ -93,12 +95,10 @@ module.exports = {
 
 			var duplicatedPurchaseList = [];
 			actions.forEach(function(action) {
-				console.log(action.timeStamp.constructor.name);
-
 				action['items'].forEach(function(item) {
 					var purchase = {};
 					purchase['item'] = item['name'];
-					if (req.param('sortBy').localeCompare('revenue') === 0)
+					if (req.param('sortby').localeCompare('revenue') === 0)
 						purchase['amount'] = item['price'];
 					else 
 						purchase['amount'] = 1;

@@ -36,7 +36,7 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  '/restaurant/:restaurantID/topdish/:top/:sortBy/:startDate/:endDate': {
+  '/restaurant/:restaurantID/topdish': {
     controller     : 'Restaurant',
     action         : 'getTopDishes'  
   },
