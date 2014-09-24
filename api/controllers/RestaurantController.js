@@ -47,6 +47,11 @@ module.exports = {
 			var revenueInfo = [];
 			var pos = 0;
 
+			if (startDate === null || endDate == null) {
+				startDate = new Date();
+				endDate = new Date();
+			}
+
 			do {	
 				var curLength = revenueInfo.length;
 				revenueInfo[curLength] = {'date': DateConverter.toString(startDate), 'amount': 0.0};
