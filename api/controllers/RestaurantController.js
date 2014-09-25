@@ -66,7 +66,10 @@ module.exports = {
 					
 				startDate.setDate(startDate.getDate() + 1);
 			}
-			while(DateConverter.compare(startDate, endDate) != 0)
+			while(startDate < endDate || 
+				 (startDate.getDate() === endDate.getDate() && 
+			      startDate.getMonth() == endDate.getMonth() && 
+			      startDate.getFullYear() === endDate.getFullYear()));
 			
 			var result = {};
 			result['restaurantID'] = req.param('restaurantID');
@@ -83,9 +86,13 @@ module.exports = {
 			top = 3;
 		var startDate 	= req.param('startdate');
 		var endDate 	= req.param('enddate');
+		var sortby 		= req.param('sortby');
+
+
 
 		startDate = DateConverter.toTimeStamp(startDate, 0);
 		endDate   = DateConverter.toTimeStamp(endDate, 1);
+		if (sortby === undefined) sortby = 'revenue';
 		
 		Action.find()
 		.where({timeStamp: {'>=': startDate}})
@@ -103,7 +110,7 @@ module.exports = {
 				action['items'].forEach(function(item) {
 					var purchase = {};
 					purchase['item'] = item['name'];
-					if (req.param('sortby').localeCompare('revenue') === 0)
+					if (sortby.localeCompare('revenue') === 0)
 						purchase['amount'] = item['price'];
 					else 
 						purchase['amount'] = 1;
@@ -157,7 +164,7 @@ module.exports = {
 			other['name'] = 'other';
 			other['amount'] = otherAmount;
 			result['topDishes'].push(other);
-			result['sortBy'] = req.param('sortBy');
+			result['sortBy'] = sortby;
 			
 			res.send(result);
 		});
