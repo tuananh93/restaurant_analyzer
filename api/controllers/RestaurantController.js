@@ -12,6 +12,7 @@ module.exports = {
 		Action.find()
 		.where({action: 'submitOrder'})
 		.where({restaurantID: [new ObjectID(req.param('restaurantID'))]})
+		.limit(30)
 		.exec(function(err, actions) {
 			if (err) {
 				console.log(err);
@@ -99,6 +100,7 @@ module.exports = {
 		.where({timeStamp: {'<=': endDate}})
 		.where({action: 'submitOrder'})
 		.where({restaurantID: [new ObjectID(req.param('restaurantID'))]})
+		.limit(30)
 		.exec(function(err, actions) {
 			if (err) {
 				console.log(err);
