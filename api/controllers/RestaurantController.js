@@ -167,6 +167,8 @@ module.exports = {
 			other['amount'] = otherAmount;
 			result['topDishes'].push(other);
 			result['sortBy'] = sortby;
+			result['startDate'] = DateConverter.toString(new Date(startDate));
+			result['endDate'] = DateConverter.toString(new Date(endDate));
 			
 			res.send(result);
 		});
